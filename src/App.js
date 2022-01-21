@@ -6,10 +6,11 @@ import Data from "./components/Data"
 function App() {
   const [filter, setFilter] = useState('')
   const [data, setData] = useState([])
+  const [weather, setWeather] = useState([])
 
   const handleFilterChange = (event) => setFilter(event.target.value)
 
-  const hook = () => {
+  const hookCountries = () => {
     axios
       .get('https://restcountries.com/v3.1/all')
       .then(response => {
@@ -17,12 +18,12 @@ function App() {
       })
   }
 
-  useEffect(hook, [])
+  useEffect(hookCountries, [])
 
   return (
     <div>
       <Filter onchange={handleFilterChange} filter={filter}/>
-      <Data data={data} filter={filter} setFilter={setFilter}/>
+      <Data data={data} filter={filter} setFilter={setFilter} weather={weather} setWeather={setWeather}/>
     </div>
   );
 }

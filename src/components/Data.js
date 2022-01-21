@@ -1,7 +1,7 @@
 import React from "react";
-import Country from "./Country"
+import Country from "./Country";
 
-const Data = ({ data, filter, setFilter }) => {
+const Data = ({ data, filter, setFilter, weather, setWeather }) => {
 
     const regex = new RegExp(`^.*${filter.toLowerCase()}.*$`)
     const filteredData = data.filter(country => country.name.common.toLowerCase().match(regex))
@@ -17,7 +17,7 @@ const Data = ({ data, filter, setFilter }) => {
                 <div key={country.name.common} style={divStyle}>
                     {country.name.common} <button onClick={() => setFilter(country.name.common)}>show</button>
                 </div>)}
-            {(filteredData.length === 1) && <Country country={filteredData[0]} />}   
+            {(filteredData.length === 1) && <Country country={filteredData[0]} weather={weather} setWeather={setWeather}/>}   
         </div>
     )
 }
