@@ -22,7 +22,7 @@ function App() {
   return (
     <div>
       <Filter onchange={handleFilterChange} filter={filter}/>
-      <Data data={data} filter={filter}/>
+      <Data data={data} filter={filter} setFilter={setFilter}/>
     </div>
   );
 }
